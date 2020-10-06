@@ -1,4 +1,4 @@
-let img = ["img/1_pig.png","img/2_squirrel.png","img/3_rabbit.png","img/4_frog.png","img/5_fox.png","img/6_bear.png","img/7_monkey.png","img/8_panda.png","img/9_chick.png","img/10_tiger.png","img/11_penguin.png","img/12_racoon.png","img/1_pig.png","img/2_squirrel.png","img/3_rabbit.png","img/4_frog.png","img/5_fox.png","img/6_bear.png","img/7_monkey.png","img/8_panda.png","img/9_chick.png","img/10_tiger.png","img/11_penguin.png","img/12_racoon.png"]
+let img = ["1_pig","2_squirrel","3_rabbit","4_frog","5_fox","6_bear","7_monkey","8_panda","9_chick","10_tiger","11_penguin","12_racoon"]
 let background = "img/back.png"
 const cardList = document.querySelector('#card_holder');
 let started = false
@@ -7,6 +7,7 @@ let time = 500
 let mytimer = null
 let score = 0
 
+addImages();
 addImages();
 
 /*function shuffle(list){
@@ -45,25 +46,18 @@ function addImages(){
     newlist.forEach(bild => {
     
         const newItemTemplate = document.querySelector('#card-temp')
-    
         const clone = newItemTemplate.content.cloneNode(true);
-    
         const newItemRow = clone.querySelector('li')
-    
         const cardImg = newItemRow.querySelector('img')
-    
-        let splitlist = bild.split('/')
-        splitlist = splitlist[1].split('_')
-        let imgid = splitlist[0]
+
+        let imgid = bild.split('_')[0]
 
         newItemRow.setAttribute('data-cardid', imgid)
-
         newItemRow.addEventListener('click', select)
         
-        cardImg.src = bild
+        cardImg.src = "img/" + bild + ".png"
     
         cardList.appendChild(newItemRow);
-    
     
     });
     
@@ -117,7 +111,7 @@ function select(event) {
         }
         
     }
-    if(document.querySelectorAll('.matched').length == img.length){
+    if(document.querySelectorAll('.matched').length == img.length * 2){
         
         score = time / attempts
         score = Math.floor(score) * 69
@@ -154,7 +148,7 @@ function check(arr) {
             for(let card of arr){
                 card.classList.remove('selected')
             }
-        }, 750)
+        }, 800)
     }
 }
 
