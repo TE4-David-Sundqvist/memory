@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header>
-        <div class="active_data">
-            <p id="time">Time: <span>500</span></p>
-            <p id="attempts">Attempts: <span>0</span></p>
+    <div id="nuke-body">
+        <header>
+            <div class="active_data">
+                <p id="time">Time: <span>500</span></p>
+                <p id="attempts">Attempts: <span>0</span></p>
+            </div>
+            <h1>Memory!</h1>
+        </header>
+        <div class="wrapper">
+            <ul id="card_holder">
+            </ul>
         </div>
-        <h1>Memory!</h1>
-    </header>
-    <div class="wrapper">
-        <ul id="card_holder">
-        </ul>
     </div>
 </body>
 
@@ -24,6 +26,20 @@
     <li>
         <img src="" alt="">
     </li>
+</template>
+
+<template id="score-board">
+    <div class="scoreboard">
+        <div class="yourscore">
+            <h1>Your score</h1>
+            <h2></h2>
+            <form id="form" onsubmit="postToScoreboard();return false">
+                <input type="text" name="name"required>
+                <input type="submit">
+            </form>
+        </div>
+        <h3>High scores</h3>
+    </div>
 </template>
 
 <script src="js/main.js"></script>

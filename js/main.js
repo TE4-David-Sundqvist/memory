@@ -3,7 +3,7 @@ let background = "img/back.png"
 const cardList = document.querySelector('#card_holder');
 let started = 0
 let attempts = 0
-let time = 60
+let time = 500
 let mytimer = null
 let score = 0
 
@@ -74,7 +74,7 @@ function countdown(){
         }
         let imgEl = document.createElement("img")
         imgEl.src = 'img/fail.gif'
-        document.body.innerHTML = imgEl.outerHTML
+        document.querySelector('#nuke-body').innerHTML = imgEl.outerHTML
 
         let button = document.createElement("button")
         button.innerText = "Play again!"
@@ -119,7 +119,8 @@ function select(event) {
     if(document.querySelectorAll('.matched').length == img.length){
         
         score = time / attempts
-        console.log(score)
+        score = Math.floor(score) * 69
+        
 
         if (mytimer){
             clearInterval(mytimer)
@@ -127,13 +128,16 @@ function select(event) {
 
         let imgEl = document.createElement("img")
         imgEl.src = 'img/finished.gif'
-        document.body.innerHTML = imgEl.outerHTML
+        document.querySelector('#nuke-body').innerHTML = imgEl.outerHTML
 
         let button = document.createElement("button")
         button.innerText = "Play again!"
         button.id = "tryagainbutton"
         button.onclick = function() { location.reload(); };
         document.body.appendChild(button)
+
+
+        render_scoreboard(score);
     }
 }
 
@@ -151,6 +155,42 @@ function check(arr) {
             }
         }, 750)
     }
+}
+
+function render_scoreboard(value){
+
+    const scoreboard_temp = document.querySelector('#score-board')
+    
+    const clone = scoreboard_temp.content.cloneNode(true);
+
+    const scoreboard = clone.querySelector('.scoreboard')
+
+    scoreboard.querySelector('.yourscore > h2').innerText = value
+
+    let highscores = Object.entries(localStorage)
+    highscores.sort(function(a,b){return b[1] - a[1]})
+
+    document.body.appendChild(scoreboard)
+
+
+    for(let i = 0; i < 10; i++){
+        let child = document.createElement('p')
+        child.innerText = highscores[i].join(': ')
+        document.querySelector('.scoreboard').appendChild(child)
+        console.log(child)
+        if (i == highscores.length - 1){
+            break
+        }
+    }
+
+}
+
+function postToScoreboard(){
+   
+    let input = document.querySelectorAll('#form input')[0].value
+    let score = document.querySelector('.yourscore > h2').innerText
+    localStorage.setItem(input, score)
+    
 }
 
 
