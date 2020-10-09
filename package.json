@@ -1,0 +1,26 @@
+{
+  "name": "gh_memory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^26.5.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
+    "@testing-library/jest-dom": "^5.11.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TE4-David-Sundqvist/memory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TE4-David-Sundqvist/memory/issues"
+  },
+  "homepage": "https://github.com/TE4-David-Sundqvist/memory#readme"
+}
