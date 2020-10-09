@@ -16,14 +16,14 @@ jobs:
         npm install
         npm run test
             
-    # lint:
+  lint:
 
-    #     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-    #     steps:
-    #     - uses: actions/checkout@v1
-    #     - name: Check for linting
-    #         run: |
-    #             echo Run lint
-    #             npm install
-    #             npm run lint
+    steps:
+    - uses: actions/checkout@v1
+    - name: Check for linting
+      run: |
+        echo Run lint
+        npm install
+        npm run lint
